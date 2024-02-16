@@ -1,17 +1,28 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <h3>{{title}}</h3>
+  <input type="text" ref="name">
+  <input type="number" ref="age">
+  <button @click="handleClick">click</button>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
 
 export default defineComponent({
   name: 'App',
-  components: {
-    HelloWorld
+  data() {
+    return {
+      title: 'This is my vue 3 version app'
+    }
+  },
+  methods:{
+    handleClick(){
+       const nameElement = this.$refs.name as HTMLElement; // Explicitly type this.$refs.name as HTMLElement
+    nameElement.classList.add('active');
+    nameElement.focus();
+    }
   }
+  
 });
 </script>
 
